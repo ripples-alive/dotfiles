@@ -1,0 +1,49 @@
+- defaults:
+    link:
+        relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.dotfiles:
+        path: ''
+        if: test ! -d ~/.dotfiles
+
+    ~/.gitignore: .gitignore
+
+    # shell
+    ~/.zsh: shell/zsh
+    ~/.zshrc: shell/zshrc
+    ~/.bashrc: shell/bashrc
+    ~/.bash_profile: shell/bash_profile
+    ~/.bash_prompt: shell/bash_prompt
+    ~/.inputrc: shell/inputrc
+
+    # vim
+    ~/.vim: vim/vim
+    ~/.vimrc: vim/vimrc
+
+    # tmux
+    ~/.tmux: tmux/tmux
+    ~/.tmux.conf: tmux/tmux.conf
+
+    # python
+    ~/.pystartup: python/pystartup
+    ~/.config/pip/pip.conf:
+        path: python/pip.conf
+        create: true
+
+    # format
+    ~/.pylintrc: format/pylintrc
+    ~/.style.yapf: format/style.yapf
+    ~/.clang-format: format/clang-format
+
+    # misc
+    ~/.wgetrc: mixin/wgetrc
+    ~/.curlrc: mixin/curlrc
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - [vim +PlugInstall +qall </dev/tty, Installing vim plugins]
+    - [~/.tmux/plugins/tpm/scripts/install_plugins.sh, Installing tmux plugins]
+    - [zsh -c 'source ~/.zshrc && antigen update && antigen reset', Updating zsh config]

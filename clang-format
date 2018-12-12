@@ -1,0 +1,20 @@
+# 基础样式
+BasedOnStyle: LLVM
+
+# 缩进宽度
+IndentWidth: 4
+
+# 括号的换行方式(Attach，Stroustrup, Allman-所有大括号都另起一行)
+BreakBeforeBraces: Attach
+
+# 支持一行的if
+AllowShortIfStatementsOnASingleLine: false
+
+# 是否允许循环单行
+AllowShortLoopsOnASingleLine: false
+
+# switch的case缩进
+IndentCaseLabels: true
+
+# 每行字符的长度
+ColumnLimit: 0

@@ -1,0 +1,7 @@
+# work in dotfiles root
+cd ${DOTFILES:-$HOME/.dotfiles}
+echo 'use dotfiles root' `pwd`
+
+git pull
+$DOTFILES/install
+

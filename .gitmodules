@@ -1,0 +1,15 @@
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "src/hashcrack"]
+	path = src/hashcrack
+	url = https://github.com/F1uYu4n/hashcrack
+[submodule "src/rsatool"]
+	path = src/rsatool
+	url = https://github.com/ius/rsatool
+[submodule "src/attackrsa"]
+	path = src/attackrsa
+	url = https://github.com/rk700/attackrsa

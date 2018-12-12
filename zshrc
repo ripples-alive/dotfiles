@@ -1,0 +1,29 @@
+export DOTFILES=$HOME/.dotfiles
+export ZSH_CUSTOM=$DOTFILES/zsh
+source $ZSH_CUSTOM/antigen.zsh
+
+# load all common configurations
+for config_file ($ZSH_CUSTOM/common/*.zsh(N)); do
+  source $config_file
+done
+unset config_file
+
+# load extra configurations
+test -e "${HOME}/.extra" && source "$HOME/.extra"
+
+# apply antigen configurations
+# remember that all configurations above will be cached
+antigen apply
+
+# lazyload completions
+function _lazyload_compdefs {
+    lazyload_compdefs
+    add-zsh-hook -D precmd _lazyload_compdefs
+}
+add-zsh-hook precmd _lazyload_compdefs
+
+# enable shell integration only when using iTerm2
+$DOTFILES/bin/isiterm2 && source $DOTFILES/iterm2/shell-integration
+
+# load extra configurations without cache
+test -e "${HOME}/.post-extra" && source "$HOME/.post-extra" || true
