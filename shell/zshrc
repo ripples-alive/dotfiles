@@ -1,5 +1,5 @@
 export DOTFILES=$HOME/.dotfiles
-export ZSH_CUSTOM=$DOTFILES/zsh
+export ZSH_CUSTOM=$HOME/.zsh
 source $ZSH_CUSTOM/antigen.zsh
 
 # load all common configurations

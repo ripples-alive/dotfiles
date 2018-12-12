@@ -32,6 +32,7 @@
     ~/.config/pip/pip.conf:
         path: python/pip.conf
         create: true
+        if: test ! -f ~/.config/pip/pip.conf
 
     # format
     ~/.pylintrc: format/pylintrc
