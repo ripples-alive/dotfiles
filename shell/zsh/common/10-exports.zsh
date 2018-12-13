@@ -14,7 +14,9 @@ export MANPAGER="less -X"
 # Set go path
 export GOPATH="${HOME}/.go"
 export PATH="${GOPATH//://bin:}/bin:$PATH"
-# Set python startup script.
+
+# Set environment for python
+export PYTHONIOENCODING=utf-8
 test -e "${HOME}/.pystartup" && export PYTHONSTARTUP="$HOME/.pystartup"
 
 # iTerm2 hostname
