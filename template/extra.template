@@ -1,11 +1,4 @@
 #!/bin/env zsh
 
 antigen bundles <<EOF
-    adb
-    copydir
-    copyfile
-    cp
-    jsontools
-    pip
-    urltools
 EOF
