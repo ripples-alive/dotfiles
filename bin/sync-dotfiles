@@ -3,5 +3,5 @@ cd ${DOTFILES:-$HOME/.dotfiles}
 echo 'use dotfiles root' `pwd`
 
 git pull
-$DOTFILES/install
+$DOTFILES/install "$@"
 
