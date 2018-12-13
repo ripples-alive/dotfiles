@@ -5,7 +5,7 @@ export EDITOR="vim"
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
-export PATH=$HOME/bin:$DOTFILES/bin:$DOTFILES/iterm2:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
+export PATH=$HOME/bin:$DOTFILES/bin:$HOME/.iterm2:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
 export MANPATH=/usr/local/share/man:/usr/share/man:/usr/local/man:$MANPATH
 
 # Don’t clear the screen after quitting a manual page

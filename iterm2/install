@@ -1,0 +1,15 @@
+
+#!/bin/bash
+
+URL="https://iterm2.com/shell_integration/zsh"
+FILENAME="${HOME}/.iterm2/shell-integration"
+echo "Downloading script from ${URL} and saving it to ${FILENAME}..."
+curl -SsL "${URL}" > "${FILENAME}" || die "Couldn't download script from ${URL}"
+sed -i 's/iterm2_hostname=`hostname`/#\0/' "${FILENAME}"
+
+UTILITIES=(imgcat imgls it2attention it2check it2copy it2dl it2getvar it2setcolor it2setkeylabel it2ul it2universion)
+for U in "${UTILITIES[@]}"
+do
+  echo "Downloading $U..."
+  curl -SsL "https://iterm2.com/utilities/$U" > ~/.iterm2/$U && chmod +x ~/.iterm2/$U
+done

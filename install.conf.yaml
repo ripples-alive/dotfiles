@@ -19,6 +19,9 @@
     ~/.bash_prompt: shell/bash_prompt
     ~/.inputrc: shell/inputrc
 
+    # iterm2
+    ~/.iterm2: iterm2
+
     # vim
     ~/.vim: vim/vim
     ~/.vimrc: vim/vimrc
@@ -51,6 +54,9 @@
     -
         command: 'curl -L https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > vim/vim/autoload/plug.vim'
         description: Downloading vim-plug
+    -
+        command: bash iterm2/install
+        description: Downloading iterm2 utilities
 
 - shell:
     - [zsh -ic 'antigen update && antigen reset', Installing antigen bundles]

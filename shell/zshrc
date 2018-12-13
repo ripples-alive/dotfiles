@@ -25,7 +25,7 @@ function _lazyload_compdefs {
 add-zsh-hook precmd _lazyload_compdefs
 
 # enable shell integration only when using iTerm2
-$DOTFILES/bin/isiterm2 && source $DOTFILES/iterm2/shell-integration
+$HOME/.iterm2/it2check && source $HOME/.iterm2/shell-integration
 
 # load extra configurations without cache
 test -e "${HOME}/.post-extra" && source "$HOME/.post-extra" || true
