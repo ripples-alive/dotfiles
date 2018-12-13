@@ -25,6 +25,13 @@ function lazyload() {
     "
 }
 
+# thefuck
+function _load_fuck {
+    eval $(thefuck --alias)
+}
+lazyload fuck
+
+# jenv
 function _load_jenv {
     eval "$(jenv init -)"
 }
