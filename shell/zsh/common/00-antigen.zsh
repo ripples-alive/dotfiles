@@ -19,7 +19,6 @@ antigen bundles <<EOF
     z
 
     zsh-users/zsh-autosuggestions
-    zsh-users/zsh-syntax-highlighting
 
     $ZSH_CUSTOM/plugin/fzf
 EOF
