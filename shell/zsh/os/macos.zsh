@@ -7,11 +7,6 @@ alias locate=glocate
 alias updatedb="sudo gupdatedb"
 alias sed=gsed
 
-if [ $commands[bat] ]
-then
-    alias cat=bat
-fi
-
 # toggle iTerm Dock icon
 # add this to your .bash_profile or .zshrc
 function toggle() {

@@ -32,6 +32,12 @@ then
     alias p=proxychains
 fi
 
+# cat/bat
+if [ $commands[bat] ]
+then
+    alias cat="bat --style=header"
+fi
+
 # Networking. IP address, dig, DNS
 if [ $commands[dig] ]; then
     alias ipglobal="dig +short myip.opendns.com @resolver1.opendns.com"

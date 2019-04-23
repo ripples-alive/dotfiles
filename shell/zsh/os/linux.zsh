@@ -17,11 +17,6 @@ then
     export INFOPATH="$INFOPATH:$HOME/.linuxbrew/share/info"
 fi
 
-if [ $commands[bat] ]
-then
-    alias cat=bat
-fi
-
 function at() {
     if [[ "$1" =~ ^[0-9]+$ ]]
     then
