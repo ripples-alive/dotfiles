@@ -287,6 +287,12 @@ function use-proxy() {
     export https_proxy=$proxy
 }
 
+# rename tmux pane
+rename-pane () {
+    read "pane_name?Enter Pane Name: "
+    printf "\033]2;%s\033\\" "${pane_name}"
+}
+
 # run ctf-box docker container
 function run-ctf-box() {
     docker run -dit --name ctf-box-$(basename $(pwd)) --rm --privileged -p 10022:22 -P -v $PWD:/root/workspace ripples/ctf-box:${${1}:-latest}
