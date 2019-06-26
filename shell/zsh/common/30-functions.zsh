@@ -294,6 +294,5 @@ rename-pane () {
 }
 
 # run ctf-box docker container
-function run-ctf-box() {
-    docker run -dit --name ctf-box-$(basename $(pwd)) --rm --privileged -p 10022:22 -P -v $PWD:/root/workspace ripples/ctf-box:${${1}:-latest}
-}
+alias run-ctf-box-1604='docker run -dit --name ctf-box-1604-$(basename $(pwd)) --rm --privileged -p 1604:22 -P -v $PWD:/root/workspace ripples/ctf-box:16.04'
+alias run-ctf-box-1804='docker run -dit --name ctf-box-1804-$(basename $(pwd)) --rm --privileged -p 1804:22 -P -v $PWD:/root/workspace ripples/ctf-box:18.04'
