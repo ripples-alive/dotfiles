@@ -59,7 +59,7 @@ function syncup() {
     fi
 
     # Format sync path
-    file_path=$(realpath -s $2)
+    file_path=$(realpath -s "$2")
     if [ -z "$file_path" ]
     then
         echo "File $2 not found!"
@@ -74,7 +74,7 @@ function syncup() {
 
     real_path=$(realpath ~/$file_path)
     dir_path=$(dirname '~/'$file_path)
-    cmd="rsync -avz '$real_path' $1:'$dir_path/'"
+    cmd="rsync -avz '$real_path' $1:'\"'\"$dir_path/\"'\"'"
     echo "${red}$cmd${reset}"
     zsh -c "$cmd"
 }
@@ -89,7 +89,7 @@ function syncdown() {
     fi
 
     # Format sync path
-    file_path=$(realpath -s $2)
+    file_path=$(realpath -s "$2")
     if [ -z "$file_path" ]
     then
         echo "File $2 not found!"
@@ -102,14 +102,14 @@ function syncdown() {
     fi
     file_path=${file_path/$HOME\//}
 
-    real_path=$(ssh $1 realpath '~/'$file_path)
+    real_path=$(ssh $1 realpath '~/'"'""$file_path""'")
     if [ -z "$real_path" ]
     then
         echo "Remote file ~/$file_path not found!"
         return -1
     fi
     dir_path=$(dirname ~/$file_path)
-    cmd="rsync -avz $1:'$real_path' '$dir_path/'"
+    cmd="rsync -avz $1:'\"'\"$real_path\"'\"' '$dir_path/'"
     echo "${red}$cmd${reset}"
     zsh -c "$cmd"
     cd $dir_path
