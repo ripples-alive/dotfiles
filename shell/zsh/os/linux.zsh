@@ -1,5 +1,7 @@
 antigen bundle systemd
 
+export ZSH_TMUX_AUTOSTART=true
+
 alias sysuser="systemctl --user"
 alias pbcopy=it2copy
 
