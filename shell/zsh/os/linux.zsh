@@ -5,6 +5,8 @@ export ZSH_TMUX_AUTOSTART=true
 alias sysuser="systemctl --user"
 alias pbcopy=it2copy
 
+export PATH="$PATH:/snap/bin"
+
 if [[ -d "/home/linuxbrew/.linuxbrew" ]]
 then
     antigen bundle brew
