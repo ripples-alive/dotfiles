@@ -7,6 +7,8 @@
 
 case "$HOST" in
     ripples-MBP)
+        ;&
+    RIPPLESWEN-MB*)
         local host_color=$fg[green]
         ;;
     *)
