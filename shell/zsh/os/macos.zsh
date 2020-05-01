@@ -1,6 +1,9 @@
 antigen bundle osx
 antigen bundle brew
 
+# Don't show context unless running with privileges or in SSH.
+typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
+
 alias timeout=gtimeout
 alias sudoedit="sudo vim"
 alias locate=glocate
