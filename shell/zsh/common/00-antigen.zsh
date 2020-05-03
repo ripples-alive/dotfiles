@@ -4,14 +4,20 @@ antigen use oh-my-zsh
 antigen bundles <<EOF
     colored-man-pages
     colorize
+    command-not-found
     cp
+    dirpersist
     docker
     docker-compose
     extract
     git
+    gitignore
     httpie
+    man
     pip
+    python
     sudo
+    transfer
     urltools
     z
 
@@ -19,6 +25,10 @@ antigen bundles <<EOF
 
     $ZSH_CUSTOM/plugin/fzf
 EOF
+
+if [ $commands[direnv] ]; then
+    antigen bundle direnv
+fi
 
 # load the theme
 antigen theme romkatv/powerlevel10k

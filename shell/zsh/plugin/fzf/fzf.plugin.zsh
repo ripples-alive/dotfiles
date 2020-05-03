@@ -32,5 +32,5 @@ if [ -n "$FZF_PATH" ]; then
 
     source function.zsh
     source fz.zsh
-    source zsh-interactive-cd.zsh
+    # source zsh-interactive-cd.zsh
 fi
