@@ -293,6 +293,23 @@ rename-pane () {
     printf "\033]2;%s\033\\" "${pane_name}"
 }
 
+# coyp the contents of a given file to the system
+function copyfile {
+    emulate -L zsh
+    $commands[cat] $1 | pbcopy
+}
+
+# copy the pathname of a given directory to the system
+function copypath {
+    emulate -L zsh
+    if [ $# = 0 ]
+    then
+        print -n $PWD | pbcopy
+    else
+        printf "%s" "$(realpath $1)" | pbcopy
+    fi
+}
+
 # run ctf-box docker container
 alias run-ctf-box-1604='docker run -dit --name ctf-box-1604-$(basename $(pwd)) --rm --privileged -p 1604:22 -P -v $PWD:/root/workspace ripples/ctf-box:16.04'
 alias run-ctf-box-1804='docker run -dit --name ctf-box-1804-$(basename $(pwd)) --rm --privileged -p 1804:22 -P -v $PWD:/root/workspace ripples/ctf-box:18.04'

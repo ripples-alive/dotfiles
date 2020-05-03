@@ -4,8 +4,6 @@ antigen use oh-my-zsh
 antigen bundles <<EOF
     colored-man-pages
     colorize
-    copydir
-    copyfile
     cp
     docker
     docker-compose
