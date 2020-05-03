@@ -40,7 +40,11 @@ function toggle() {
 function iplocal() {
     local purple="\x1B\[35m" reset="\x1B\[m"
     if [ $commands[ip] ]; then
-        $commands[ip] addr | \
+        local cmd="$(command -v ip) addr show"
+        if [ $# = 1 ]; then
+            cmd="$cmd dev $1"
+        fi
+        $SHELL -c $cmd | \
             sed -r "s/^(\S*):.*$/\n${purple}\1${reset}/g" | \
             sed -r "s/\s+ether\s+(\S*)/📘  \1/g" | \
             sed -r "s/.*inet6?\s+([^\/]+)(\/[0-9]+)?.*/📶  \1 \2/g" | \
