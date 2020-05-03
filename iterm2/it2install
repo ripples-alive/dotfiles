@@ -3,15 +3,15 @@
 URL="https://iterm2.com/shell_integration/zsh"
 FILENAME="${HOME}/.iterm2/shell-integration"
 echo "Downloading script from ${URL} and saving it to ${FILENAME}..."
-curl -SsL "${URL}" | sed 's/iterm2_hostname=`hostname`/#&/' > "${FILENAME}"
+curl -fSsL "${URL}" | sed 's/iterm2_hostname=`hostname`/#&/' > "${FILENAME}"
 
 UTILITIES=(imgcat imgls it2attention it2check it2copy it2dl it2getvar it2setcolor it2setkeylabel it2ul it2universion)
 if command -v xargs >/dev/null 2>&1; then 
-  echo ${UTILITIES[@]} | tr ' ' '\n' | xargs -n1 -L1 -P20 -I% bash -cv 'curl -SsL "https://iterm2.com/utilities/%" > ~/.iterm2/% && chmod +x ~/.iterm2/%'
+  echo ${UTILITIES[@]} | tr ' ' '\n' | xargs -n1 -L1 -P20 -I% bash -cv 'curl -fSsL "https://iterm2.com/utilities/%" -o ~/.iterm2/% && chmod +x ~/.iterm2/%'
 else 
   for U in "${UTILITIES[@]}"
   do
     echo "Downloading $U..."
-    curl -SsL "https://iterm2.com/utilities/$U" > ~/.iterm2/$U && chmod +x ~/.iterm2/$U
+    curl -fSsL "https://iterm2.com/utilities/$U" -o ~/.iterm2/$U && chmod +x ~/.iterm2/$U
   done
 fi
