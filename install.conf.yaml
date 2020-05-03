@@ -14,7 +14,6 @@
     # shell
     ~/.zsh: shell/zsh
     ~/.zshrc: shell/zshrc
-    ~/.p10k.zsh: shell/zsh/p10k.zsh
     ~/.bashrc: shell/bashrc
     ~/.bash_profile: shell/bash_profile
     ~/.bash_prompt: shell/bash_prompt
