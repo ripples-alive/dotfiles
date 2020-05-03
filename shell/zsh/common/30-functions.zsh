@@ -59,25 +59,20 @@ function syncup() {
     fi
 
     # Format sync path
-    file_path=$(realpath -s "$2")
-    if [ -z "$file_path" ]
-    then
-        echo "File $2 not found!"
-        return -1
-    fi
-    if [[ "$file_path" != "$HOME"/* ]]
+    file_path=$(realpath -s --relative-base ~ -e "$2") || return -1
+    if [[ "$file_path" == /* ]]
     then
         echo "Sync files outside of home directory is now allowed!"
         return -1
     fi
-    file_path=${file_path/$HOME\//}
+    # ATTENTION: remove sync dir prefix
+    file_path=${file_path/cloud\//}
 
-    real_path=$(realpath ~/$file_path)
-    dir_path=$(dirname '~/'$file_path)
-    cmd="rsync -avz '$real_path' $1:'\"'\"$dir_path/\"'\"'"
-    echo "${red}$cmd${reset}"
-    zsh -c "$cmd"
+    dir_path=$(dirname $file_path)
+    echo "${red}rsync -avz ~/\"$file_path\" \"$1:~/\\\"$dir_path/\\\"\"${reset}"
+    rsync -avz ~/"$file_path" "$1:~/\"$dir_path/\""
 }
+compdef syncup=ssh
 
 # Download files from ssh server
 function syncdown() {
@@ -89,31 +84,20 @@ function syncdown() {
     fi
 
     # Format sync path
-    file_path=$(realpath -s "$2")
-    if [ -z "$file_path" ]
-    then
-        echo "File $2 not found!"
-        return -1
-    fi
-    if [[ "$file_path" != "$HOME"/* ]]
+    file_path=$(realpath -s --relative-base ~ "$2") || return -1
+    if [[ "$file_path" == /* ]]
     then
         echo "Sync files outside of home directory is now allowed!"
         return -1
     fi
-    file_path=${file_path/$HOME\//}
+    # ATTENTION: remove sync dir prefix
+    file_path=${file_path/cloud\//}
 
-    real_path=$(ssh $1 realpath '~/'"'""$file_path""'")
-    if [ -z "$real_path" ]
-    then
-        echo "Remote file ~/$file_path not found!"
-        return -1
-    fi
-    dir_path=$(dirname ~/$file_path)
-    cmd="rsync -avz $1:'\"'\"$real_path\"'\"' '$dir_path/'"
-    echo "${red}$cmd${reset}"
-    zsh -c "$cmd"
-    cd $dir_path
+    dir_path=$(dirname $file_path)
+    echo "${red}rsync -avz \"$1:~/\\\"$file_path\\\"\" ~/\"$dir_path/\"${reset}"
+    rsync -avz "$1:~/\"$file_path\"" ~/"$dir_path/"
 }
+compdef syncdown=syncup
 
 # Use Git’s colored diff when available
 hash git &>/dev/null;
