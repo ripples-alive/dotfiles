@@ -272,19 +272,22 @@ function use-proxy() {
         return -1
     fi
 
-    local host port proxy
+    local proxy
     if [ $# = 1 ]
     then
-        host='127.0.0.1'
-        port=$1
+        if [[ "$1" =~ ".*://.*" ]]
+        then
+            proxy="$1"
+        else
+            proxy="http://127.0.0.1:$1"
+        fi
     else
-        host=$1
-        port=$2
+        proxy="http://$1:$2"
     fi
-    proxy="$host:$port"
     echo "Use proxy $proxy"
     export http_proxy=$proxy
     export https_proxy=$proxy
+    export all_proxy=$proxy
 }
 
 # rename tmux pane
