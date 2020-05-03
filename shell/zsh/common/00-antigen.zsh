@@ -14,7 +14,6 @@ antigen bundles <<EOF
     httpie
     pip
     sudo
-    tmux
     urltools
     z
 
