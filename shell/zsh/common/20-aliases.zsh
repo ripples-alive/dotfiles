@@ -58,5 +58,3 @@ alias tailf="tail -f"
 alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
 alias clean-docker-container='docker ps -aq | xargs docker rm'
 alias clean-docker-image='docker images | grep "^<none>" | awk "{print $3}" | xargs docker rmi'
-
-alias clear-proxy='unset http_proxy https_proxy all_proxy'
