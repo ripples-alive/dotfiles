@@ -295,7 +295,7 @@ rename-pane () {
 # coyp the contents of a given file to the system
 function copyfile {
     emulate -L zsh
-    $commands[cat] $1 | pbcopy
+    $commands[cat] $1 | it2copy
 }
 
 # copy the pathname of a given directory to the system
@@ -303,9 +303,9 @@ function copypath {
     emulate -L zsh
     if [ $# = 0 ]
     then
-        print -n $PWD | pbcopy
+        print -n $PWD | it2copy
     else
-        printf "%s" "$(realpath $1)" | pbcopy
+        printf "%s" "$(realpath $1)" | it2copy
     fi
 }
 
