@@ -1,11 +1,17 @@
 #!/bin/env zsh
 
+# prepare lazyload compdef
+typeset -a __lazyload_compdefs
+compdef () { __lazyload_compdefs=($__lazyload_compdefs "$*") }
+
 # auto start tmux before p10k instant prompt
-if [[ "$(uname -s)" != "Darwin" ]]; then
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    export PATH="$PATH:/usr/local/bin"
+else
     export ZSH_TMUX_AUTOSTART=true
 fi
 if [[ -r "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/tmux/tmux.plugin.zsh" ]]; then
-    source $HOME/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/tmux/tmux.plugin.zsh 2>/dev/null
+    source $HOME/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/tmux/tmux.plugin.zsh
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.

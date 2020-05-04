@@ -1,6 +1,3 @@
-typeset -a __lazyload_compdefs
-compdef () { __lazyload_compdefs=($__lazyload_compdefs "$*") }
-
 function lazyload_compdefs() {
     local cdef
     for cdef in "${__lazyload_compdefs[@]}"; do
