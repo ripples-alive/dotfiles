@@ -24,6 +24,7 @@ antigen bundles <<EOF
     zsh-users/zsh-autosuggestions
 
     $ZSH_CUSTOM/plugin/fzf
+    $ZSH_CUSTOM/plugin/ip
 EOF
 
 if [ $commands[direnv] ]; then

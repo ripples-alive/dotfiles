@@ -38,13 +38,6 @@ then
     alias cat="bat --style=header"
 fi
 
-# Networking. IP address, dig, DNS
-if [ $commands[dig] ]; then
-    alias ipglobal="dig +short myip.opendns.com @resolver1.opendns.com"
-else
-    alias ipglobal="curl -q myip.ipip.net 2>/dev/null | awk -F'：' '{print \$2}' | awk '{print \$1}'"
-fi
-
 # Recursively delete `.DS_Store` files
 alias cleanup_dsstore="find . -name '*.DS_Store' -type f -ls -delete"
 

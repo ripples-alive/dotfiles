@@ -27,20 +27,3 @@ function at() {
         sudo gdb attach `pidof $1`
     fi
 }
-
-# get local ip address
-function iplocal() {
-    local purple="\x1B\[35m" reset="\x1B\[m"
-    local cmd="$(command -v ip) addr show"
-    if [ $# = 1 ]; then
-        cmd="$cmd dev $1"
-    fi
-    $SHELL -c $cmd | \
-        sed -r "s/^[0-9]+:\s*(.*):.*$/\n${purple}\1${reset}/g" | \
-        sed -r "s/.*link\S*\s+(\S*)\s.*/📘  \1/g" | \
-        sed -r "s/.*inet6?\s+([^\/]+)(\/[0-9]+)?\s.*/📶  \1 \2/g" | \
-        grep -v valid_lft | \
-        sed "/^${purple}.*@/,/^$/d" | \
-        sed "1{/^$/d}" | \
-        sed "\${/^$/d}"
-}
