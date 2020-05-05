@@ -18,3 +18,6 @@ test -e "${HOME}/.pystartup" && export PYTHONSTARTUP="$HOME/.pystartup"
 
 # iTerm2 hostname
 export iterm2_hostname=${iterm2_hostname:-${$(hostname -f 2>/dev/null)#ripples-}}
+
+# for proxy plugin
+export USE_SYSTEM_PROXY=true
