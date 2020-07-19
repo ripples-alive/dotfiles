@@ -254,7 +254,7 @@ rename-pane () {
     printf "\033]2;%s\033\\" "${pane_name}"
 }
 
-# coyp the contents of a given file to the system
+# copy the contents of a given file to the system
 function copyfile {
     emulate -L zsh
     $commands[cat] $1 | it2copy
